@@ -32,7 +32,7 @@ export const arduinoService = {
   },
 
   async testConnection(): Promise<{ success: boolean; response: string }> {
-    return await apiClient.post('/arduino/test');
+    return await apiClient.post('/arduino/test-capture');
   },
 
   async refreshPorts(): Promise<SerialPort[]> {
