@@ -34,7 +34,7 @@ export const arduinoService = {
     return await apiClient.post('/arduino/test-capture');
   },
 
-  async refreshPorts(): Promise<SerialPort[]> {
+  async refreshPorts(): Promise<any> {
     return await apiClient.get('/arduino/refresh-ports');
   },
 
