@@ -10,8 +10,7 @@ export interface SerialPort {
 export interface ArduinoStatus {
   connected: boolean;
   port: string | null;
-  lastSeen: string | null;
-  firmware: string | null;
+  beaudrate: number | null;
 }
 
 export const arduinoService = {
