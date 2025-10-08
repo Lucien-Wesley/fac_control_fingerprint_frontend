@@ -2,11 +2,13 @@ import { apiClient } from './api';
 
 export interface Student {
   id?: number;
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   studentNumber: string;
-  major: string;
+  major?: string;
   year: number;
+  department: string;
   fingerprintId?: string;
   createdAt?: string;
   updatedAt?: string;

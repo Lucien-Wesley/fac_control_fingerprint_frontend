@@ -103,12 +103,12 @@ const StudentsPage: React.FC = () => {
     {
       key: 'firstName',
       label: 'Prénom',
-      render: (_: any, row: Student) => row.name?.split(' ')[0] || '',
+      render: (_: any, row: Student) => row.firstName,
     },
     {
       key: 'lastName',
       label: 'Nom',
-      render: (_: any, row: Student) => row.name?.split(' ').slice(1).join(' ') || '',
+      render: (_: any, row: Student) => row.lastName,
     },
     {
       key: 'email',

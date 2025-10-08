@@ -208,7 +208,7 @@ const Dashboard: React.FC = () => {
                 <div key={student.id} className="flex items-center justify-between">
                   <div>
                     <div className="text-sm font-medium text-gray-900">
-                      {student.name}
+                      {student.firstName} {student.lastName}
                     </div>
                     <div className="text-xs text-gray-500">{student.major}</div>
                   </div>
