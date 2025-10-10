@@ -32,7 +32,7 @@ const StudentForm: React.FC<StudentFormProps> = ({ student, onSave, onCancel }) 
         lastName: student.lastName,
         email: student.email,
         studentNumber: student.studentNumber,
-        major: student.major || '',
+        major: student.major,
         year: student.year,
       });
     }

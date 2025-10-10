@@ -57,7 +57,7 @@ const StudentsPage: React.FC = () => {
   const handleDeleteStudent = async (student: Student) => {
     if (!student.id) return;
     
-    if (window.confirm(`Êtes-vous sûr de vouloir supprimer l'étudiant ${student.name} ?`)) {
+    if (window.confirm(`Êtes-vous sûr de vouloir supprimer l'étudiant ${student.firstName} ${student.lastName} ?`)) {
       try {
         await studentService.deleteStudent(student.id);
         await loadStudents();
