@@ -8,8 +8,7 @@ export interface Student {
   studentNumber: string;
   major?: string;
   year: number;
-  department: string;
-  fingerprintId?: string;
+  fingerprintId?: number;
   createdAt?: string;
   updatedAt?: string;
 }
