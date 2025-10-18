@@ -23,7 +23,7 @@ const StudentForm: React.FC<StudentFormProps> = ({ student, onSave, onCancel }) 
   const [showBiometric, setShowBiometric] = useState(false);
   const [biometricStatus, setBiometricStatus] = useState<any>(null);
   const [sessionId, setSessionId] = useState<string>('');
-  const [errors, setErrors] = useState<{ [K in keyof Student]?: string }>({});
+  const [errors, setErrors] = useState<Partial<Student>>({});
 
   useEffect(() => {
     if (student) {
@@ -32,14 +32,14 @@ const StudentForm: React.FC<StudentFormProps> = ({ student, onSave, onCancel }) 
         lastName: student.lastName,
         email: student.email,
         studentNumber: student.studentNumber,
-        major: student.major,
+        major: student.major || '',
         year: student.year,
       });
     }
   }, [student]);
 
   const validateForm = (): boolean => {
-    const newErrors: { [K in keyof Student]?: string } = {};
+    const newErrors: Partial<Student> = {};
 
     if (!formData.firstName.trim()) newErrors.firstName = 'Le prénom est requis';
     if (!formData.lastName.trim()) newErrors.lastName = 'Le nom est requis';
@@ -49,7 +49,7 @@ const StudentForm: React.FC<StudentFormProps> = ({ student, onSave, onCancel }) 
       newErrors.email = 'L\'email n\'est pas valide';
     }
     if (!formData.studentNumber.trim()) newErrors.studentNumber = 'Le numéro étudiant est requis';
-    if (!formData.major?.trim()) newErrors.major = 'Le département est requis';
+    if (!formData.major || !formData.major.trim()) newErrors.major = 'Le département est requis';
     if (formData.year < 1 || formData.year > 8) newErrors.year = 'L\'année doit être entre 1 et 8';
 
     setErrors(newErrors);
@@ -117,7 +117,7 @@ const StudentForm: React.FC<StudentFormProps> = ({ student, onSave, onCancel }) 
         // Create new student first
         const newStudent = await studentService.createStudent(formData);
         // Then start biometric enrollment if new student is ready
-        await startBiometricEnrollment(newStudent.fingerprintId!);
+        await startBiometricEnrollment(newStudent.id!);
       }
     } catch (error) {
       console.error('Failed to save student:', error);
