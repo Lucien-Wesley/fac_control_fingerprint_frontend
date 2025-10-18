@@ -6,7 +6,7 @@ export interface Student {
   lastName: string;
   email: string;
   studentNumber: string;
-  major?: string;
+  major: string;
   year: number;
   fingerprintId?: number;
   createdAt?: string;

@@ -32,7 +32,7 @@ const StudentForm: React.FC<StudentFormProps> = ({ student, onSave, onCancel }) 
         lastName: student.lastName,
         email: student.email,
         studentNumber: student.studentNumber,
-        major: student.major || '',
+        major: student.major,
         year: student.year,
       });
     }
@@ -264,13 +264,13 @@ const StudentForm: React.FC<StudentFormProps> = ({ student, onSave, onCancel }) 
       </div>
 
       <div>
-        <label htmlFor="department" className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="major" className="block text-sm font-medium text-gray-700 mb-1">
           Département *
         </label>
         <input
           type="text"
-          id="department"
-          name="department"
+          id="major"
+          name="major"
           value={formData.major}
           onChange={handleInputChange}
           className={`block w-full rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 ${
