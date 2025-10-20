@@ -117,7 +117,7 @@ const StudentForm: React.FC<StudentFormProps> = ({ student, onSave, onCancel }) 
         // Create new student first
         const newStudent = await studentService.createStudent(formData);
         // Then start biometric enrollment if new student is ready
-        await startBiometricEnrollment(newStudent.id!);
+        await startBiometricEnrollment(newStudent.fingerprintId!);
       }
     } catch (error) {
       console.error('Failed to save student:', error);
