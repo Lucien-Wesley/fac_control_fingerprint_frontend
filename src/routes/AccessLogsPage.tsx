@@ -25,7 +25,7 @@ const AccessLogsPage: React.FC = () => {
   useEffect(() => { load(range); }, [range, load]);
 
   // Handle real-time updates
-  useEventSource('/events/access-logs', (data) => {
+  useEventSource('/arduino/access-logs', (data) => {
     // Expect data to be { type: 'access', payload: AccessLogEntry }
     if (!data) return;
     const payload = data.payload ?? data;
