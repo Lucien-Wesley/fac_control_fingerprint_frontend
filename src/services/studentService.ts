@@ -9,6 +9,7 @@ export interface Student {
   major: string;
   year: number;
   fingerprintId?: number;
+  fingerprint_verified?: boolean;
   createdAt?: string;
   updatedAt?: string;
 }
@@ -19,10 +20,10 @@ export interface BiometricVerificationRequest {
 }
 
 export interface BiometricStatus {
-  status: 'waiting' | 'processing' | 'success' | 'error' | 'retry';
-  message: string;
-  attempts: number;
-  maxAttempts: number;
+  status: "OK",
+  is_connected: string,
+  last_message: string,
+  status_file_content: string
 }
 
 export const studentService = {
@@ -52,11 +53,11 @@ export const studentService = {
 
   // Biometric verification methods
   async startBiometricEnrollment(studentId: number): Promise<{ success: boolean; sessionId: string }> {
-    return await apiClient.post('/students/biometric/enroll', { studentId });
+    return await apiClient.post(`/arduino/enroll/${ studentId }`);
   },
 
-  async getBiometricStatus(sessionId: string): Promise<BiometricStatus> {
-    return await apiClient.get(`/students/biometric/status/${sessionId}`);
+  async getBiometricStatus(): Promise<BiometricStatus> {
+    return await apiClient.get(`/arduino/output`);
   },
 
   async cancelBiometricSession(sessionId: string): Promise<void> {
