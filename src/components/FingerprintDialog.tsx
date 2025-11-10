@@ -35,6 +35,7 @@ const FingerprintDialog: React.FC<Props> = ({ student, onClose }) => {
       try {
         const res = await studentService.getBiometricStatus();
         const msg = res.last_message || '';
+        console.log('Biometric status message:', msg);
         if (msg.includes('INFO')) {
           addMessage(msg);
         }
