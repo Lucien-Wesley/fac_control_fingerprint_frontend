@@ -35,11 +35,12 @@ const FingerprintDialog: React.FC<Props> = ({ student, onClose }) => {
       try {
         const res = await studentService.getBiometricStatus();
         const msg = res.last_message || '';
-        if (msg.includes('ENREGISTREMENT') || msg.includes('INFO')) {
+        if (msg.includes('INFO')) {
           addMessage(msg);
         }
         if (msg.includes('SUCCES') || msg.includes('ECHEC') || msg.includes('ABANDONNE')) {
           clearInterval(interval);
+          await studentService.verifyStudentFingerprint();
           setCompleted(true);
           setLoading(false);
         }

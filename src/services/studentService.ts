@@ -64,7 +64,7 @@ export const studentService = {
     await apiClient.delete(`/students/biometric/session/${sessionId}`);
   },
 
-  async verifyStudentFingerprint(studentId: number): Promise<{ success: boolean; confidence: number }> {
-    return await apiClient.post('/students/biometric/verify', { studentId });
+  async verifyStudentFingerprint(): Promise<{ success: boolean; message: string }> {
+    return await apiClient.post('/arduino/verify');
   },
 };
